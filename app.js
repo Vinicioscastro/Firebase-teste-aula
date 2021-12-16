@@ -3,7 +3,7 @@ import firebase from "firebase";
 
 console.log("Aula Firebase");
 
-  db.doc('pessoa/1').get().then(
+  db.doc('pessoa/3').get().then(
     doc=>{
       if(doc.exists){
           console.log(doc.data().nome);
@@ -17,44 +17,45 @@ console.log("Aula Firebase");
   );
   
 
-// db.doc(`alunos/2`).get().then(
-//   doc => {
-//     if(doc.exists){
-//       console.log(doc.data());
-//     }
-//   }
-// );
+db.doc(`pessoa/2`).get().then(
+  doc => {
+    if(doc.exists){
+      console.log("caiu aqui");
+      console.log(doc.data());
+    }
+  }
+);
 
-db.doc(`alunos/1`).get().then(
-   doc => {
-     if(doc.exists){
-       doc.data().disciplina.get().then(
-         disc=>{
-           if(disciplina.exists){
-             console.log(disciplina.data());
-           }
-         }
-       )
-     }
-   }
- );
+// db.doc(`pessoa/1`).get().then(
+//    doc => {
+//      if(doc.exists){
+//        doc.data().disciplina.get().then(
+//          disc=>{
+//            if(disciplina.exists){
+//              console.log(disciplina.data());
+//            }
+//          }
+//        )
+//      }
+//    }
+//  );
 
-// db.collection('alunos').get().then(res=>
-//   res.forEach(doc=>{
-//     if(doc.exists){
-//         if(doc.data().idade>18)
-//             console.log(doc.data().nome);
-//     }
-//   })
-// );
+db.collection('pessoa').get().then(res=>
+  res.forEach(doc=>{
+    if(doc.exists){
+        if(doc.data().idade>18)
+            console.log(doc.data().nome);
+    }
+  })
+);
 
-// db.collection('disciplinas').get().then(res=>
-//     res.forEach(doc=>{
-//         if(doc.exists){
-//         console.log(doc.data().nome);
-//         }
-//     })
-// );
+db.collection('disciplina').get().then(res=>
+    res.forEach(doc=>{
+        if(doc.exists){
+        console.log(doc.data().nome);
+        }
+    })
+);
 // console.log("atualizar interface");
 
 // let ref1 = db.collection('alunos').doc('3');
