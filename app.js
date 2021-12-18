@@ -78,14 +78,14 @@ db.collection('pessoa').get().then(res =>
   })
 );
 
-// db.collection('disciplina').get().then(res=>
-//     res.forEach(doc=>{
-//         if(doc.exists){
-//         console.log(doc.data().nome);
-//         }
-//     })
-// );
-// console.log("atualizar interface");
+db.collection('disciplina').get().then(res=>
+    res.forEach(doc=>{
+        if(doc.exists){
+        console.log(doc.data().nome);
+        }
+    })
+);
+console.log("atualizar interface");
 
 // let ref1 = db.collection('alunos').doc('3');
 // ref1.set({nome: 'Fulano', idade:18}).then(()=>console.log("Aluno inserido"));
