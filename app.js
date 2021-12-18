@@ -3,28 +3,57 @@ import firebase from "firebase";
 
 console.log("Aula Firebase");
 
-  db.doc('pessoa/3').get().then(
-    doc=>{
-      if(doc.exists){
-          console.log(doc.data().nome);
-          console.log(doc.data().idade);
-          console.log(doc.data());
-          
-      }else{
-          console.log("Aluno não encontrado");
-      }
+db.doc('pessoa/1').get().then(
+  doc => {
+    if (doc.exists) {
+      console.log(doc.data().nome);
+      console.log(doc.data().idade);
+
+    } else {
+      console.log("Aluno não encontrado");
     }
-  );
-  
+  }
+);
+
+
+console.log("------------------------")
 
 db.doc(`pessoa/2`).get().then(
   doc => {
-    if(doc.exists){
+    if (doc.exists) {
       console.log("caiu aqui");
       console.log(doc.data());
     }
   }
 );
+
+db.doc(`disciplina/pdm`).get().then(
+  doc => {
+    if (doc.exists){
+      console.log(doc.data());
+    }
+    else{
+      console.log("Não existe");
+    }
+  }
+)
+
+  // console.log("------------------------")
+  // db.doc(`pessoa/1`).get().then(
+  //   doc=>{
+  //     if(doc.exists){
+  //       doc.data().disciplina.get().then(
+  //         disc=>{
+  //           if (disciplina.exists){
+  //           console.log(disciplina.data())
+  //           }
+  //         }
+  //       )
+  //     }
+  //   }
+  // )
+  // console.log("------------------------")
+
 
 // db.doc(`pessoa/1`).get().then(
 //    doc => {
@@ -32,30 +61,30 @@ db.doc(`pessoa/2`).get().then(
 //        doc.data().disciplina.get().then(
 //          disc=>{
 //            if(disciplina.exists){
-//              console.log(disciplina.data());
+//              console.log(disciplina.data().nome());
 //            }
 //          }
 //        )
 //      }
 //    }
-//  );
+//  )
 
-db.collection('pessoa').get().then(res=>
-  res.forEach(doc=>{
-    if(doc.exists){
-        if(doc.data().idade>18)
-            console.log(doc.data().nome);
-    }
-  })
-);
+// db.collection('pessoa').get().then(res=>
+//   res.forEach(doc=>{
+//     if(doc.exists){
+//         if(doc.data().idade>18)
+//             console.log(doc.data().nome);
+//     }
+//   })
+// );
 
-db.collection('disciplina').get().then(res=>
-    res.forEach(doc=>{
-        if(doc.exists){
-        console.log(doc.data().nome);
-        }
-    })
-);
+// db.collection('disciplina').get().then(res=>
+//     res.forEach(doc=>{
+//         if(doc.exists){
+//         console.log(doc.data().nome);
+//         }
+//     })
+// );
 // console.log("atualizar interface");
 
 // let ref1 = db.collection('alunos').doc('3');
@@ -104,4 +133,3 @@ db.collection('disciplina').get().then(res=>
 //         })
 //     }
 // });
-    
