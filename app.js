@@ -29,30 +29,30 @@ db.doc(`pessoa/2`).get().then(
 
 db.doc(`disciplina/pdm`).get().then(
   doc => {
-    if (doc.exists){
+    if (doc.exists) {
+      console.log("caiu aqui 2");
       console.log(doc.data());
-    }
-    else{
-      console.log("Não existe");
     }
   }
 )
 
-  // console.log("------------------------")
-  // db.doc(`pessoa/1`).get().then(
-  //   doc=>{
-  //     if(doc.exists){
-  //       doc.data().disciplina.get().then(
-  //         disc=>{
-  //           if (disciplina.exists){
-  //           console.log(disciplina.data())
-  //           }
-  //         }
-  //       )
-  //     }
-  //   }
-  // )
-  // console.log("------------------------")
+console.log("------------------------")
+db.doc(`pessoa/1`).get().then(
+  doc => {
+    if (doc.exists) {
+      doc.data().disciplina.get().then(
+        disc => {
+          if (disc.exists) {
+            console.log("caiu aqui 3");
+            // console.log(doc.data())
+            console.log(disc.data())
+          }
+        }
+      )
+    }
+  }
+)
+console.log("------------------------")
 
 
 // db.doc(`pessoa/1`).get().then(
@@ -60,8 +60,8 @@ db.doc(`disciplina/pdm`).get().then(
 //      if(doc.exists){
 //        doc.data().disciplina.get().then(
 //          disc=>{
-//            if(disciplina.exists){
-//              console.log(disciplina.data().nome());
+//            if(disc.exists){
+//              console.log(disc.data().nome);
 //            }
 //          }
 //        )
@@ -69,14 +69,14 @@ db.doc(`disciplina/pdm`).get().then(
 //    }
 //  )
 
-// db.collection('pessoa').get().then(res=>
-//   res.forEach(doc=>{
-//     if(doc.exists){
-//         if(doc.data().idade>18)
-//             console.log(doc.data().nome);
-//     }
-//   })
-// );
+db.collection('pessoa').get().then(res =>
+  res.forEach(doc => {
+    if (doc.exists) {
+      if (doc.data().idade > 18)
+        console.log(doc.data().nome);
+    }
+  })
+);
 
 // db.collection('disciplina').get().then(res=>
 //     res.forEach(doc=>{
